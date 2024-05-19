@@ -1,13 +1,12 @@
 import React, { useEffect } from 'react'
-import { AuthProvider, useAuth } from './context/AuthContext'
-import { SearchProvider } from './context/SearchContext'
+import { useAuth } from './context/AuthContext'
 import Header from './components/Header'
 import UserControls from './components/UserControls'
 import Search from './components/Search'
 import Dashboard from './components/Display'
 import Footer from './components/Footer'
 
-const AppContent = () => {
+const App = () => {
 	const { userData, setAccessToken, setRefreshToken } = useAuth()
 
 	useEffect(() => {
@@ -39,16 +38,6 @@ const AppContent = () => {
 			</main>
 			<Footer />
 		</>
-	)
-}
-
-const App = () => {
-	return (
-		<AuthProvider>
-			<SearchProvider>
-				<AppContent />
-			</SearchProvider>
-		</AuthProvider>
 	)
 }
 

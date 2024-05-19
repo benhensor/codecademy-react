@@ -6,14 +6,10 @@ const SearchContext = createContext();
 
 export const SearchProvider = ({ children }) => {
   const { accessToken } = useAuth();
-  const [searchResults, setSearchResults] = useState(null);
-  const [artists, setArtists] = useState([]);
-  const [albums, setAlbums] = useState([]);
-  const [tracks, setTracks] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  
 
   const searchSpotify = async (query) => {
     if (!accessToken) {
@@ -34,12 +30,15 @@ export const SearchProvider = ({ children }) => {
           type: 'track,artist,album',
         },
       });
-      setSearchResults(response.data);
+
+      const combinedResults = [
+        ...response.data.artists.items.map(item => ({ type: 'artist', data: item })),
+        ...response.data.albums.items.map(item => ({ type: 'album', data: item })),
+        ...response.data.tracks.items.map(item => ({ type: 'track', data: item })),
+      ];
+
+      setSearchResults(combinedResults);
       setSearchTerm(query);
-      setArtists(response.data.artists.items);
-      setAlbums(response.data.albums.items);
-      setTracks(response.data.tracks.items);
-      console.log('Search results:', response.data);
     } catch (error) {
       console.error('Error searching Spotify:', error);
       setError('Error searching Spotify');
@@ -48,65 +47,69 @@ export const SearchProvider = ({ children }) => {
     }
   };
 
-  const formatSearchResults = searchResults => {}
+  const removeDuplicates = (array, key) => {
+    const seen = new Set();
+    return array.filter(item => {
+      const value = item.data[key];
+      if (seen.has(value)) {
+        return false;
+      } else {
+        seen.add(value);
+        return true;
+      }
+    });
+  };
 
+  const searchById = async (id, type) => {
+    if (!accessToken) {
+      setError('Invalid or missing access token');
+      return;
+    }
 
-  // const getArtistById = async (artistId) => {
-  //   if (!accessToken) {
-  //     setError('Invalid or missing access token');
-  //     return;
-  //   }
-  
-  //   try {
-  //     const response = await axios.get(`https://api.spotify.com/v1/artists/${artistId}`, {
-  //       headers: {
-  //         Authorization: `Bearer ${accessToken}`,
-  //       },
-  //     });
-  //     setArtist(response.data);
-  //   } catch (error) {
-  //     console.error('Error fetching artist:', error);
-  //   }
-  // };
+    setLoading(true);
 
-  // const getAlbumById = async (albumId) => {
-  //   if (!accessToken) {
-  //     setError('Invalid or missing access token');
-  //     return;
-  //   }
-  
-  //   try {
-  //     const response = await axios.get(`https://api.spotify.com/v1/albums/${albumId}`, {
-  //       headers: {
-  //         Authorization: `Bearer ${accessToken}`,
-  //       },
-  //     });
-  //     setAlbum(response.data);
-  //   } catch (error) {
-  //     console.error('Error fetching album:', error);
-  //   }
-  // };
+    try {
+      let result;
 
-  // const getTrackById = async (trackId) => {
-  //   if (!accessToken) {
-  //     setError('Invalid or missing access token');
-  //     return;
-  //   }
-  
-  //   try {
-  //     const response = await axios.get(`https://api.spotify.com/v1/tracks/${trackId}`, {
-  //       headers: {
-  //         Authorization: `Bearer ${accessToken}`,
-  //       },
-  //     });
-  //     console.log('Track:', response.data);
-  //   } catch (error) {
-  //     console.error('Error fetching track:', error);
-  //   }
-  // };
+      if (type === 'artist') {
+        result = await axios.get(`https://api.spotify.com/v1/artists/${id}`, {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        });
+      } else if (type === 'album') {
+        result = await axios.get(`https://api.spotify.com/v1/albums/${id}`, {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        });
+      } else if (type === 'track') {
+        result = await axios.get(`https://api.spotify.com/v1/tracks/${id}`, {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        });
+      }
+
+      await searchSpotify(result.data.name);
+
+      setSearchResults(prevResults => {
+        const combinedResults = [
+          { type, data: result.data },
+          ...prevResults,
+        ];
+        return removeDuplicates(combinedResults, 'id');
+      });
+    } catch (error) {
+      console.error('Error fetching results by ID:', error);
+      setError('Error fetching results by ID');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
-    <SearchContext.Provider value={{ searchResults, searchTerm, artists, albums, tracks, searchSpotify, loading, error }}>
+    <SearchContext.Provider value={{ searchTerm, searchResults, searchSpotify, searchById, loading, error }}>
       {children}
     </SearchContext.Provider>
   );
