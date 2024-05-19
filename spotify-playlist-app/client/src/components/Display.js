@@ -176,7 +176,6 @@ const ContentContainer = styled.div`
   display: grid;
   grid-template-columns: ${props => props.$showPlaylist ? '1fr 1fr' : '1fr'};
   gap: 1rem;
-  width: 100%;
 	height: 100%;
 	overflow: hidden;
   @media screen and (max-width: 768px) {

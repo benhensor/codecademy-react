@@ -29,16 +29,16 @@ export default function NewPlaylist({ onClick }) {
 const NewPlaylistIcon = styled.button`
 	background: none;
 	background-color: none;
-	color: var(--color-white);
+	color: var(--color-primary);
 	width: 4rem;
 	height: 4rem;
-	border: 3px solid var(--color-white);
+	border: 3px solid var(--color-primary);
 	border-radius: 50%;
 	cursor: pointer;
 	transition: 0.12s;
 	text-shadow: 0 0 0.2rem #000000;
 	&:hover {
-		color: var(--color-primary);
-		border: 3px solid var(--color-primary);
+		color: var(--color-tertiary);
+		border: 3px solid var(--color-tertiary);
 	}
 `

@@ -16,7 +16,7 @@ export default function PlaylistItem({ item }) {
   }
 
   const handleRemove = (index) => {
-    removeFromPlaylist(index);
+    removeFromPlaylist(itemId);
   };
   
   return (
@@ -37,7 +37,7 @@ export default function PlaylistItem({ item }) {
           </Subtitle>
         </Info>
       </ImgAndInfo>
-      <Remove />
+      <Remove onClick={handleRemove}/>
     </Container>
   )
 }
@@ -67,7 +67,7 @@ const Image = styled.img`
   width: 6.4rem;
   height: 6.4rem;
   margin-right: 1rem;
-  border-radius: ${props => props.$isArtist ? '50%' : '0.5rem'};
+  border-radius: 0.5rem;
   flex-shrink: 0;
   @media screen and (max-width: 768px) {
     width: 4rem;

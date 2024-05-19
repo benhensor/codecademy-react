@@ -1,35 +1,39 @@
 import React from 'react'
 import styled from 'styled-components'
 
-export default function Remove() {
-  return (
-    <Button>
-      <svg fill="currentColor" version="1.1" id="Capa_1"
-        width="32px" height="32px" viewBox="0 0 400 400">
-      <g>
-        <g>
-          <path d="M199.992,0C89.717,0,0,89.72,0,200s89.717,200,199.992,200C310.273,400,400,310.28,400,200S310.273,0,199.992,0z
-            M199.992,373.77C104.178,373.77,26.23,295.816,26.23,200c0-95.817,77.947-173.769,173.762-173.769
-            c95.822,0,173.776,77.953,173.776,173.769C373.769,295.816,295.814,373.77,199.992,373.77z"/>
-          <path d="M265.473,134.529c-5.123-5.123-13.422-5.123-18.545,0L200,181.454l-46.928-46.925c-5.123-5.123-13.424-5.123-18.547,0
-            c-5.123,5.12-5.123,13.426,0,18.546L181.447,200l-46.928,46.926c-5.123,5.119-5.123,13.422,0,18.547
-            c2.561,2.562,5.918,3.842,9.273,3.842s6.711-1.28,9.271-3.842L200,218.543l46.928,46.932c2.562,2.562,5.916,3.842,9.271,3.842
-            c3.354,0,6.711-1.279,9.272-3.842c5.123-5.119,5.123-13.426,0-18.545L218.545,200l46.928-46.925
-            C270.596,147.955,270.596,139.652,265.473,134.529z"/>
-        </g>
-      </g>
-      </svg>
-    </Button>
-  )
+export default function Remove({ onClick }) {
+	return (
+		<Button onClick={onClick}>
+			<svg
+				width="20px"
+				height="20px"
+				viewBox="0 0 24 22"
+				fill="none"
+				xmlns="http://www.w3.org/2000/svg"
+			>
+				<path
+					fillRule="evenodd"
+					clipRule="evenodd"
+					d="M5.29289 5.29289C5.68342 4.90237 6.31658 4.90237 6.70711 5.29289L12 10.5858L17.2929 5.29289C17.6834 4.90237 18.3166 4.90237 18.7071 5.29289C19.0976 5.68342 19.0976 6.31658 18.7071 6.70711L13.4142 12L18.7071 17.2929C19.0976 17.6834 19.0976 18.3166 18.7071 18.7071C18.3166 19.0976 17.6834 19.0976 17.2929 18.7071L12 13.4142L6.70711 18.7071C6.31658 19.0976 5.68342 19.0976 5.29289 18.7071C4.90237 18.3166 4.90237 17.6834 5.29289 17.2929L10.5858 12L5.29289 6.70711C4.90237 6.31658 4.90237 5.68342 5.29289 5.29289Z"
+					fill="currentColor"
+				/>
+			</svg>
+		</Button>
+	)
 }
 
 const Button = styled.button`
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: var(--color-white);
-  font-size: var(--font-size-sm);
-  &:hover {
-    color: var(--color-secondary);
-  }
+	background: none;
+	border: none;
+	cursor: pointer;
+  min-width: 3rem;
+  min-height: 3rem;
+	color: var(--color-white);
+	font-size: var(--font-size-sm);
+  border: 1px solid var(--color-white);
+  border-radius: 50%;
+	&:hover {
+		color: var(--color-secondary);
+    border: 1px solid var(--color-secondary);
+	}
 `

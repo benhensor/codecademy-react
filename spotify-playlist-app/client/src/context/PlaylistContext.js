@@ -11,10 +11,6 @@ export const PlaylistProvider = ({ children }) => {
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null); // For success feedback
 
-  useEffect(() => {
-    console.log('Playlist in provider:', playlist);
-  }, [playlist]);
-
   const addToPlaylist = (item) => {
     setPlaylist((prevPlaylist) => {
       const isDuplicate = prevPlaylist.some(playlistItem => playlistItem.itemId === item.itemId);

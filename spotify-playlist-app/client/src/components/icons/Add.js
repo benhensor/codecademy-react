@@ -33,8 +33,8 @@ const AddButton = styled.button`
   background: none;
   background-color: none;
   color: var(--color-white);
-  width: 4rem;
-  height: 4rem;
+  min-width: 3rem;
+  min-height: 3rem;
   border: 1px solid var(--color-white);
   border-radius: 50%;
   cursor: pointer;
