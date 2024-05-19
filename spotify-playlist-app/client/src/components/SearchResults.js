@@ -9,7 +9,7 @@ export default function SearchResults({ results }) {
 
       <ListedResults>
         {results.map((item) => (
-          <ListItem key={item.id} item={item} />
+          <ListItem key={item.data.id} item={item} />
         ))}
       </ListedResults>
 
@@ -18,7 +18,6 @@ export default function SearchResults({ results }) {
 }
 
 const StyledSearchResults = styled.div`
-  border-radius: 0.5rem;
   height: 100%;
   overflow: hidden;
   overflow-y: auto;
