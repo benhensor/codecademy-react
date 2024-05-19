@@ -20,17 +20,22 @@ const StyledFooter = styled.footer`
   position: fixed;
   bottom: 0;
   width: 100%;
-  font-size: clamp(var(--font-size-xxs), 1.5vw, var(--font-size-md));
+  font-size: clamp(var(--font-size-xxs), 1.5vw, var(--font-size-sm));
   z-index: 100;
   @media screen and (max-width: 768px) {
+    padding: 1rem 0;
+  }
+  @media screen and (max-width: 450px) {
     padding: 1rem 0;
   }
 `
 
 const Container = styled.div`
-  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `
 
 const Text = styled.p`

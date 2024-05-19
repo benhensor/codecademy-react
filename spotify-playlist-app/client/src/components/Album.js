@@ -1,57 +1,88 @@
 import React from 'react'
 import styled from 'styled-components'
-import UseMediaQuery from '../hooks/UseMediaQuery'
-import { useSearch } from '../context/SearchContext';
+import Add from '../assets/icons/add.svg'
+// import { useSearch } from '../context/SearchContext'
 
-export default function Album({ album }) {
-  const { searchSpotify } = useSearch();
+export default function Album({ img, albumName, artistName, type, albumId }) {
 
-  const isDesktop = UseMediaQuery('(min-width: 1200px)').matches;
-  const isTablet = UseMediaQuery('(min-width: 451px) and (max-width: 1199px)').matches;
-  const isMobile = UseMediaQuery('(max-width: 450px)').matches;
+  // const { getAlbumById } = useSearch()
 
-  const getImage = () => {
-      if (isDesktop) {
-        return album.images[0].url
-      } else if (isTablet) {
-        return album.images[1].url
-      } else if (isMobile) {
-        return album.images[2].url
-      }
-  }
+  // const handleSearch = () => {
+  //   getAlbumById(albumId)
+  // }
 
   return (
-    <Container onClick={() => searchSpotify(album.name)}>
-      <Image src={getImage()} alt={album.name} />
-      <div>
-        <h3>{album.name}</h3>
-        <h4>{album.artists[0].name}</h4>
-      </div>
+    <Container>
+      <ImgAndInfo>
+        <Image src={img} alt={albumName} />
+        <Info>
+          <Title>{albumName}</Title>
+          <Subtitle>{type} • <span>{artistName}</span></Subtitle>
+        </Info>
+      </ImgAndInfo>
+      <img src={Add} alt="Add to Playlist" />
     </Container>
   )
 }
 
-const Container = styled.li`
+const Container = styled.div`
+  backdrop-filter: blur(5px);
   width: 100%;
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  div {
-    padding: 1rem 0;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    h3 {
-      font-size: var(--font-size-md);
-      color: var(--color-light);
-    }
-  }
+  padding: 1rem;
+`
+
+const ImgAndInfo = styled.div`
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-start;
+  align-items: center;
+  overflow: hidden;
 `
 
 const Image = styled.img`
-  max-width: 100%;
-  height: auto;
+  width: 6.4rem;
+  height: 6.4rem;
+  margin-right: 1rem;
   border-radius: 0.5rem;
+  flex-shrink: 0;
+  @media screen and (max-width: 768px) {
+    width: 4rem;
+    height: 4rem;
+  }
+`
+
+const Info = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding-right: 0.5rem;
+  overflow: hidden;
+`
+
+const Title = styled.h3`
+  font-size: var(--font-size-md);
+  color: var(--color-light);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  @media screen and (max-width: 768px) {
+    font-size: var(--font-size-xs);
+  }
+`
+
+const Subtitle = styled.h4`
+  font-size: var(--font-size-xs);
+  color: var(--color-light-gray);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  span {
+    color: var(--color-primary);
+  }
+  @media screen and (max-width: 768px) {
+    font-size: var(--font-size-xxs);
+    color: var(--color-dark-gray);
+  }
 `

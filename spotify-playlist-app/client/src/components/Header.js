@@ -24,6 +24,7 @@ const StyledHeader = styled.header`
   background-color: var(--color-dark);
   height: 15rem;
   z-index: 100;
+  border-bottom: 1px solid var(--color-primary);
   @media screen and (max-width: 1199px) {
     height: 10rem;
   }

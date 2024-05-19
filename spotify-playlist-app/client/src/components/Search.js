@@ -1,14 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { useSearch } from '../context/SearchContext'
 
 export default function Search() {
 
-  const { searchSpotify, loading, error } = useSearch()
+  const { searchSpotify } = useSearch()
+
+	const [value, setValue] = useState('')
 
   const handleSearch = (e) => {
     if (e.key === 'Enter') {
       searchSpotify(e.target.value)
+			setValue('')
     }
   }
 
@@ -17,10 +20,10 @@ export default function Search() {
 			<input
 				type="text"
 				placeholder="What do you want to listen to?"
+				value={value}
+        onChange={(e) => setValue(e.target.value)}
 				onKeyDown={handleSearch}
 			/>
-      {loading && <p>Loading...</p>}
-      {error && <p>Error: {error}</p>}
 		</StyledSearch>
 	)
 }
@@ -33,7 +36,7 @@ const StyledSearch = styled.div`
 	margin: 2rem auto;
 	input {
 		width: 100%;
-		max-width: 60rem;
+		max-width: 50rem;
 		padding: 1rem;
 		border: 1px solid #111;
 		border-radius: 5px;
@@ -48,9 +51,9 @@ const StyledSearch = styled.div`
 		}
 	}
 	@media screen and (max-width: 768px) {
-		margin: 2rem 5rem;
+		margin: 2rem 2rem;
 	}
 	@media screen and (max-width: 450px) {
-		margin: 2rem 3rem;
+		margin: 2rem 1rem;
 	}
 `
