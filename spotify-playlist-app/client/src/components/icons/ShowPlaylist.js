@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 
-export default function NewPlaylist({ onClick }) {
+export default function ShowPlaylist({ onClick }) {
 	return (
-		<NewPlaylistIcon onClick={onClick}>
+		<ShowPlaylistIcon onClick={onClick}>
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				width="20"
@@ -22,11 +22,11 @@ export default function NewPlaylist({ onClick }) {
 				<line x1="3" y1="9" x2="13" y2="9" />
 				<path d="M9 13h-6" />
 			</svg>
-		</NewPlaylistIcon>
+		</ShowPlaylistIcon>
 	)
 }
 
-const NewPlaylistIcon = styled.button`
+const ShowPlaylistIcon = styled.button`
 	background: none;
 	background-color: none;
 	color: var(--color-primary);

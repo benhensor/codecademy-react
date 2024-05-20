@@ -6,7 +6,6 @@ export default function SearchResults({ results }) {
 
   return (
     <StyledSearchResults>
-
       <ListedResults>
         {results.map((item) => (
           <ListItem key={item.data.id} item={item} />
@@ -19,7 +18,6 @@ export default function SearchResults({ results }) {
 
 const StyledSearchResults = styled.div`
   height: 100%;
-  overflow: hidden;
   overflow-y: auto;
 	&::-webkit-scrollbar {
 		display: none;

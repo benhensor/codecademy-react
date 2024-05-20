@@ -108,8 +108,13 @@ export const SearchProvider = ({ children }) => {
     }
   };
 
+  const resetSearch = () => {
+    setSearchTerm('');
+    setSearchResults([]);
+  };
+
   return (
-    <SearchContext.Provider value={{ searchTerm, searchResults, searchSpotify, searchById, loading, error }}>
+    <SearchContext.Provider value={{ searchTerm, searchResults, searchSpotify, searchById, resetSearch, loading, error }}>
       {children}
     </SearchContext.Provider>
   );

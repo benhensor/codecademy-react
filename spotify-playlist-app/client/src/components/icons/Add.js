@@ -40,6 +40,7 @@ const AddButton = styled.button`
   cursor: pointer;
   transition: 0.12s;
   text-shadow: 0 0 0.2rem #000000;
+  margin-left: 1rem;
   &:hover {
     color: var(--color-primary);
     border: 1px solid var(--color-primary);

@@ -6,7 +6,7 @@ import Remove from './icons/Remove'
 
 export default function PlaylistItem({ item }) {
 
-  const { img, name, artistName, albumName, type, itemId, artistId } = item
+  const { img, name, artistName, type, itemId, artistId } = item
 
   const { searchById } = useSearch()
   const { removeFromPlaylist } = usePlaylist()
@@ -15,7 +15,7 @@ export default function PlaylistItem({ item }) {
     searchById(id, type)
   }
 
-  const handleRemove = (index) => {
+  const handleRemove = () => {
     removeFromPlaylist(itemId);
   };
   
@@ -43,7 +43,6 @@ export default function PlaylistItem({ item }) {
 }
 
 const Container = styled.div`
-  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -78,7 +77,6 @@ const Image = styled.img`
 const Info = styled.div`
   display: flex;
   flex-direction: column;
-  padding-right: 0.5rem;
   overflow: hidden;
 `
 

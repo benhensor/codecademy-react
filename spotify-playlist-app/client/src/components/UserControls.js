@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useAuth } from '../context/AuthContext';
+import Opening from './icons/Opening';
+import Closing from './icons/Closing';
 
 export default function UserControls() {
   const { accessToken, userData } = useAuth();
@@ -12,7 +14,7 @@ export default function UserControls() {
         <LoginButton href={loginUrl}>Log in with Spotify</LoginButton>
       )}
       {accessToken && userData && (
-        <WelcomeText>Welcome, {userData.display_name}</WelcomeText>
+        <WelcomeText>Welcome <Opening /> {userData.display_name} <Closing /></WelcomeText>
       )}
     </StyledUserControls>
   );
@@ -48,7 +50,14 @@ const LoginButton = styled.a`
 `
 
 const WelcomeText = styled.p`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(5px);
+  background-color: #00000050;
+  border-radius: 1rem;
   width: 100%;
+  max-width: 50rem;
   text-align: center;
 	font-size: clamp(var(--font-size-xs), 3vw, var(--font-size-lg));
 	margin-top: 1rem;

@@ -84,7 +84,6 @@ export default function Listitem({ item }) {
 
 const Container = styled.div`
   backdrop-filter: blur(5px);
-  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -119,7 +118,6 @@ const Image = styled.img`
 const Info = styled.div`
   display: flex;
   flex-direction: column;
-  padding-right: 0.5rem;
   overflow: hidden;
 `
 
