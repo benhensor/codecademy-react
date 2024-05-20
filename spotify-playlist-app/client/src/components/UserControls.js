@@ -35,7 +35,7 @@ const StyledUserControls = styled.div`
 `
 
 const LoginButton = styled.a`
-	background-color: #1db954;
+	background-color: var(--color-primary);
 	color: white;
 	padding: 1rem 2rem;
 	border-radius: 1rem;
@@ -45,7 +45,7 @@ const LoginButton = styled.a`
 	cursor: pointer;
 	transition: 0.12s;
 	&:hover {
-		background-color: #1ed760;
+		background-color: var(--color-tertiary);
 	}
 `
 
