@@ -12,6 +12,7 @@ dotenv.config();
 const client_id = process.env.SPOTIFY_CLIENT_ID;
 const client_secret = process.env.SPOTIFY_CLIENT_SECRET;
 const redirect_uri = process.env.SPOTIFY_REDIRECT_URI;
+const frontend_url = process.env.FRONTEND_URL;
 const PORT = process.env.PORT || 5000;
 
 const generateRandomString = (length) => {
@@ -69,7 +70,7 @@ app.get('/callback', async (req, res) => {
     });
 
     const { access_token, refresh_token } = response.data;
-    res.redirect(`http://localhost:3000/callback?${querystring.stringify({ access_token, refresh_token })}`);
+    res.redirect(`${frontend_url}/callback?${querystring.stringify({ access_token, refresh_token })}`);
   } catch (error) {
     res.redirect('/login?' + querystring.stringify({ error: 'invalid_token' }));
   }
