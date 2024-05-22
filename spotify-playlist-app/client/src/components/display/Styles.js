@@ -15,6 +15,9 @@ const Container = styled.div`
 	@media screen and (max-width: 768px) {
 		margin: 1rem 0;
 	}
+	@media screen and (max-width: 450px) {
+		margin: 0;
+	}
 `
 
 const StyledDisplay = styled.div`
@@ -37,6 +40,11 @@ const StyledDisplay = styled.div`
 		height: ${props => (props.$activeSearch ? 'calc(100% - 3rem)' : '100%')};
 		margin: 0 0.5rem;
 		padding: 0 1rem;
+	}
+	@media screen and (max-width: 450px) {
+		margin: 0;
+		padding: 0 0.5rem;
+		border-radius: 0;
 	}
 `
 
@@ -74,6 +82,10 @@ const Header = styled.div`
 		flex-direction: column;
 		align-items: flex-start;
 	}
+	@media screen and (max-width: 450px) {
+		padding: 1rem 0;
+		border-radius: 0;
+	}
 `
 
 const StyledSearch = styled.div`
@@ -99,8 +111,9 @@ const IconContainer = styled.div`
 	width: 4rem;
 	height: 4rem;
 	color: var(--color-light);
-	align-content: center;
-	margin-top: 0.5rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	@media screen and (max-width: 768px) {
 		width: 3rem;
 		height: 3rem;

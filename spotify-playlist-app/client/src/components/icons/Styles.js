@@ -1,17 +1,24 @@
 import styled from 'styled-components'
 
 const Button = styled.button`
+	display: flex;
+	justify-content: center;
+	align-items: center;
   background: none;
   border: none;
   background-color: none;
   color: var(--color-white);
-  min-width: 3rem;
-  min-height: 3rem;
+  width: 3rem;
+  height: 3rem;
   cursor: pointer;
   transition: 0.12s;
   text-shadow: 0 0 0.2rem #000000;
   &:hover {
     color: var(--color-primary);
+  }
+	@media screen and (max-width: 768px) {
+    width: 2rem;
+    height: 2rem;
   }
 `
 
@@ -70,10 +77,22 @@ const ShowPlaylistIcon = styled.button`
 	}
 `
 
+const SearchIcon = styled.div`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 3rem;
+	height: 3rem;
+	@media screen and (max-width: 768px) {
+    width: 2rem;
+    height: 2rem;
+  }
+`
+
 const Icon = styled.svg`
   color: var(--color-primary);
 	width: 24px;
 	height: 24px;
 `
 
-export { Button, PlayerButton, RemoveButton, ShowPlaylistIcon, Icon }
+export { Button, PlayerButton, RemoveButton, ShowPlaylistIcon, SearchIcon, Icon }

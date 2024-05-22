@@ -17,7 +17,6 @@ export default function Search({ setShowPlaylist, activeFilter, setActiveFilter 
 			.join(' ')
 	}
 
-
 	const handleFilterSelect = (filter) => {
 		setActiveFilter(filter === activeFilter ? '' : filter)
 	}
