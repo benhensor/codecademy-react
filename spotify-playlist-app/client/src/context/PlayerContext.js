@@ -160,10 +160,6 @@ export const PlayerProvider = ({ children }) => {
 				)
 				if (webPlayer) {
 					setDeviceId(webPlayer.id)
-					console.log(
-						'Device ID set from devices endpoint:',
-						webPlayer.id
-					)
 				} else {
 					console.error('Web Player not found in devices')
 				}
