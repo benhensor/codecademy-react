@@ -1,16 +1,4 @@
-import React from 'react'
 import styled from 'styled-components'
-
-export default function Footer() {
-  const year = new Date().getFullYear()
-  return (
-    <StyledFooter>
-      <Container>
-        <Text>&copy; {year} <Link href="https://benhensordev.netlify.app/" rel="noreferrer" target="_blank">Ben Hensor</Link></Text>
-      </Container>
-    </StyledFooter>
-  )
-}
 
 const StyledFooter = styled.footer`
   background-color: var(--color-dark);
@@ -50,3 +38,5 @@ const Link = styled.a`
     color: var(--color-primary);
   }
 `
+
+export { StyledFooter, Container, Text, Link }

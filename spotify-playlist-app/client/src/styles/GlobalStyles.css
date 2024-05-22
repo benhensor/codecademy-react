@@ -3,7 +3,7 @@
 :root {
   /* COLORS */
   --color-primary: #00aa90;
-  --color-secondary: #FF4500;
+  --color-secondary: #ffaa00;
   --color-tertiary: #43ebd1;
   --color-quaternary: #FFA07A;
   --color-quinary: #FF8C00;
@@ -15,7 +15,7 @@
   --color-light: #F5F5F5;
   --color-dark: #111;
   --color-success: #008000;
-  --color-error: #FF0000;
+  --color-error: #FF4500;
   --color-warning: #FFA500;
   --color-info: #00BFFF;
 
@@ -38,6 +38,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  user-select: none;
 }
 
 html {
@@ -57,36 +58,35 @@ main {
   position: relative;
   background: url('../assets/img/background.webp');
   background-size: cover;
-  background-position: center 15rem;
+  background-position: center 12rem;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  margin-top: 15rem;
+  margin-top: 12rem;
   display: flex;
   align-items: center;
   flex-direction: column;
-}
-
-main .content {
   width: 100%;
-  height: 100vh;
-  z-index: 100;
+  height: calc(100vh + 12rem);
 }
 
 @media screen and (max-width: 1199px) {
   main {
     background-position: center 10rem;
     margin-top: 10rem;
+    height: calc(100vh - 10rem);
   }
 }
 @media screen and (max-width: 768px) {
   main {
-    background-position: center 7rem;
-    margin-top: 7rem;
+    background-position: center 8rem;
+    margin-top: 8rem;
+    height: calc(100vh - 8rem);
   }
 }
 @media screen and (max-width: 450px) {
   main {
-    background-position: center 5rem;
-    margin-top: 5rem;
+    background-position: center 7rem;
+    margin-top: 7rem;
+    height: calc(100vh - 7rem);
   }
 }

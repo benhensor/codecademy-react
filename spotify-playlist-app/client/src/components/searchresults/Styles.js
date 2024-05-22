@@ -1,48 +1,25 @@
-import React from 'react'
 import styled from 'styled-components'
-import { useSearch } from '../context/SearchContext'
-import { usePlaylist } from '../context/PlaylistContext'
-import Remove from './icons/Remove'
 
-export default function PlaylistItem({ item }) {
+/* SEARCH RESULTS STYLES */
 
-  const { img, name, artistName, type, itemId, artistId } = item
+const StyledSearchResults = styled.div`
+  height: 100%;
+  overflow-y: auto;
+	&::-webkit-scrollbar {
+		display: none;
+	}
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+`
 
-  const { searchById } = useSearch()
-  const { removeFromPlaylist } = usePlaylist()
+const ListedResults = styled.ul`
+  list-style: none;
+`
 
-  const handleSearchById = (id, type) => {
-    searchById(id, type)
-  }
-
-  const handleRemove = () => {
-    removeFromPlaylist(itemId);
-  };
-  
-  return (
-    <Container id={type}>
-      <ImgAndInfo>
-        <Image src={img} alt={name}/>
-        <Info>
-          <Title onClick={() => handleSearchById(itemId, type)}>{name}</Title>
-          <Subtitle>
-            {type}
-            {type === 'track' || type === 'album' ? (
-              <> {' • '} 
-                <Button onClick={() => handleSearchById(artistId, type)}>
-                  <span>{artistName}</span>
-                </Button>
-              </>
-            ) : null}
-          </Subtitle>
-        </Info>
-      </ImgAndInfo>
-      <Remove onClick={handleRemove}/>
-    </Container>
-  )
-}
+/* LIST ITEM STYLES */
 
 const Container = styled.div`
+  backdrop-filter: blur(5px);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -62,16 +39,35 @@ const ImgAndInfo = styled.div`
   overflow: hidden;
 `
 
-const Image = styled.img`
+const ImageContainer = styled.div`
+  position: relative;
   width: 6.4rem;
   height: 6.4rem;
   margin-right: 1rem;
-  border-radius: 0.5rem;
-  flex-shrink: 0;
   @media screen and (max-width: 768px) {
     width: 4rem;
     height: 4rem;
   }
+`
+
+const PlayPause = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  background-color: #00000095;
+  z-index: 1;
+`
+
+const Image = styled.img`
+  max-width: 100%;
+  height: 100%;
+  object-fit: cover;
+  aspect-ratio: 1 / 1;
+  border-radius: ${props => props.$isArtist ? '50%' : '0.5rem'};
+  flex-shrink: 0;
 `
 
 const Info = styled.div`
@@ -116,3 +112,5 @@ const Button = styled.button`
   padding: 0;
   font: inherit;
 `
+
+export { StyledSearchResults, ListedResults, Container, ImgAndInfo, ImageContainer, PlayPause, Image, Info, Title, Subtitle, Button }

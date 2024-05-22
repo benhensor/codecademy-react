@@ -1,9 +1,9 @@
 import React from 'react'
-import styled from 'styled-components'
+import { Button } from './Styles'
 
 export default function Add({ onClick }) {
   return (
-    <AddButton onClick={onClick}>
+    <Button onClick={onClick}>
       <svg
         width="24px"
         height="24px"
@@ -25,24 +25,6 @@ export default function Add({ onClick }) {
           style={{ fill: 'none', stroke: 'currentColor', strokeLinecap: 'round', strokeLinejoin: 'round', strokeWidth: '32px' }}
         />
       </svg>
-    </AddButton>
+    </Button>
   );
 }
-
-const AddButton = styled.button`
-  background: none;
-  background-color: none;
-  color: var(--color-white);
-  min-width: 3rem;
-  min-height: 3rem;
-  border: 1px solid var(--color-white);
-  border-radius: 50%;
-  cursor: pointer;
-  transition: 0.12s;
-  text-shadow: 0 0 0.2rem #000000;
-  margin-left: 1rem;
-  &:hover {
-    color: var(--color-primary);
-    border: 1px solid var(--color-primary);
-  }
-`

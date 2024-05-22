@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { usePlaylist } from '../context/PlaylistContext'
+import { usePlaylist } from '../../context/PlaylistContext'
 import styled from 'styled-components'
 import PlaylistItem from './PlaylistItem'
 

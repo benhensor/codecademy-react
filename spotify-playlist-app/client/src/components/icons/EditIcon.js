@@ -1,9 +1,9 @@
 import React from 'react'
-import styled from 'styled-components'
+import { Button } from './Styles'
 
 export default function Edit() {
 	return (
-		<StyledEdit>
+		<Button>
       <svg
         width="35px"
         height="35px"
@@ -38,21 +38,21 @@ export default function Edit() {
           </g>
         </g>
       </svg>
-    </StyledEdit>
+    </Button>
 	)
 }
 
-const StyledEdit = styled.div`
-  background: none;
-  background-color: none;
-  color: var(--color-white);
-  width: 3rem;
-  height: 3rem;
-  margin-left: 1rem;
-  cursor: pointer;
-  transition: 0.12s;
-  text-shadow: 0 0 0.2rem #000000;
-  &:hover {
-    color: var(--color-primary);
-  }
-`
+// const StyledEdit = styled.div`
+//   background: none;
+//   background-color: none;
+//   color: var(--color-white);
+//   width: 3rem;
+//   height: 3rem;
+//   margin-left: 1rem;
+//   cursor: pointer;
+//   transition: 0.12s;
+//   text-shadow: 0 0 0.2rem #000000;
+//   &:hover {
+//     color: var(--color-primary);
+//   }
+// `

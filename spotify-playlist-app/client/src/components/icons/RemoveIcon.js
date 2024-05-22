@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import { RemoveButton as Button } from './Styles'
 
 export default function Remove({ onClick }) {
 	return (
@@ -21,20 +21,3 @@ export default function Remove({ onClick }) {
 		</Button>
 	)
 }
-
-const Button = styled.button`
-	background: none;
-	border: none;
-	cursor: pointer;
-  min-width: 3rem;
-  min-height: 3rem;
-	color: var(--color-white);
-	font-size: var(--font-size-sm);
-  border: 1px solid var(--color-white);
-  border-radius: 50%;
-	margin-left: 1rem;
-	&:hover {
-		color: var(--color-secondary);
-    border: 1px solid var(--color-secondary);
-	}
-`

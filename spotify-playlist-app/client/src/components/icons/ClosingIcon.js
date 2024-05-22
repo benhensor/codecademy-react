@@ -1,11 +1,8 @@
 import React from 'react'
-import styled from 'styled-components'
-
+import { Icon } from './Styles'
 export default function Closing() {
 	return (
-		<StyledClosing
-			width="45px"
-			height="45px"
+		<Icon
 			viewBox="0 0 24 24"
 			fill="none"
 		>
@@ -16,10 +13,6 @@ export default function Closing() {
 				strokeLinecap="round"
 				strokeLinejoin="round"
 			/>
-		</StyledClosing>
+		</Icon>
 	)
 }
-
-const StyledClosing = styled.svg`
-  color: var(--color-primary);
-`

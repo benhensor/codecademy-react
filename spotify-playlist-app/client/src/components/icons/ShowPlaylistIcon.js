@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import { ShowPlaylistIcon } from './Styles'
 
 export default function ShowPlaylist({ onClick }) {
 	return (
@@ -25,20 +25,3 @@ export default function ShowPlaylist({ onClick }) {
 		</ShowPlaylistIcon>
 	)
 }
-
-const ShowPlaylistIcon = styled.button`
-	background: none;
-	background-color: none;
-	color: var(--color-primary);
-	width: 4rem;
-	height: 4rem;
-	border: 3px solid var(--color-primary);
-	border-radius: 50%;
-	cursor: pointer;
-	transition: 0.12s;
-	text-shadow: 0 0 0.2rem #000000;
-	&:hover {
-		color: var(--color-tertiary);
-		border: 3px solid var(--color-tertiary);
-	}
-`

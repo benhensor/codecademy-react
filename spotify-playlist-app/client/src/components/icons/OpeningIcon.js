@@ -1,11 +1,9 @@
 import React from 'react'
-import styled from 'styled-components'
+import { Icon } from './Styles'
 
 export default function Opening() {
 	return (
-		<StyledOpening
-			width="45px"
-			height="45px"
+		<Icon
 			viewBox="0 0 24 24"
 			fill="none"
 		>
@@ -16,10 +14,6 @@ export default function Opening() {
 				strokeLinecap="round"
 				strokeLinejoin="round"
 			/>
-		</StyledOpening>
+		</Icon>
 	)
 }
-
-const StyledOpening = styled.svg`
-  color: var(--color-primary);
-`
