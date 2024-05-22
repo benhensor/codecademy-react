@@ -72,6 +72,7 @@ app.get('/logout', (req, res) => {
 	res.clearCookie('access_token')
 	res.clearCookie('refresh_token')
 	res.status(200).send('Logged out successfully')
+	res.redirect('/login')
 })
 
 app.get('/callback', async (req, res) => {
