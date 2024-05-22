@@ -8,7 +8,7 @@ import PauseIcon from '../icons/PauseIcon'
 import AddIcon from '../icons/AddIcon'
 import { Container, ImgAndInfo, ImageContainer, PlayPause,  Image, Info, Title, Subtitle, Button } from './Styles'
 
-export default function Listitem({ item, isActive, setIsActive, onTrackClick, isPlaying, onPlayPauseClick }) {
+export default function Listitem({ item, isActive, onTrackClick, isPlaying, onPlayPauseClick }) {
 
   const { searchById } = useSearch()
   const { addToPlaylist } = usePlaylist()
@@ -16,6 +16,8 @@ export default function Listitem({ item, isActive, setIsActive, onTrackClick, is
   const [ITEM, setITEM] = useState({})
   const [isArtist, setIsArtist] = useState(false)
   const [isTrackImageHovered, setIsTrackImageHovered] = useState(false)
+
+  const tabletAndMobile = window.matchMedia('(max-width: 768px)').matches
 
   useEffect(() => {
     const formatListitem = (item) => {
@@ -88,7 +90,7 @@ export default function Listitem({ item, isActive, setIsActive, onTrackClick, is
                 )}
               </PlayPause>
             ) : null}
-            <Image src={ITEM.img} alt={ITEM.name} $isArtist={isArtist}/>
+            <Image src={ITEM.img} alt={ITEM.name} $isArtist={isArtist} onClick={tabletAndMobile ? handlePlayPauseClick : null}/>
           </ImageContainer>
           <Info>
             <Title onClick={() => handleSearchById(ITEM.itemId, ITEM.type)}>{ITEM.name}</Title>

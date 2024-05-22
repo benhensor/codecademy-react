@@ -59,6 +59,9 @@ const PlayPause = styled.div`
   height: 100%;
   background-color: #00000095;
   z-index: 1;
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 `
 
 const Image = styled.img`
