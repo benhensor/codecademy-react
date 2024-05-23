@@ -17,6 +17,7 @@ const Container = styled.div`
 	}
 	@media screen and (max-width: 450px) {
 		margin: 0;
+		height: 100%;
 	}
 `
 
@@ -53,7 +54,7 @@ const Content = styled.div`
 	max-width: 120rem;
 	display: grid;
 	grid-template-columns: ${(props) =>
-		props.$showPlaylist ? '1fr 1fr' : '1fr'};
+    props.$showPlaylist ? '1fr 1fr' : '1fr'};
 	gap: 2rem;
 	overflow: hidden;
 	@media screen and (max-width: 768px) {
@@ -62,6 +63,10 @@ const Content = styled.div`
 		& > *:nth-child(2) {
 			order: -1;
 		}
+	}
+	@media screen and (max-width: 450px) {
+		margin: 0 0 1rem 0;
+		height: 100%;
 	}
 `
 
@@ -83,7 +88,7 @@ const Header = styled.div`
 		align-items: flex-start;
 	}
 	@media screen and (max-width: 450px) {
-		padding: 1rem 0;
+		padding: 1rem 0.5rem;
 		border-radius: 0;
 	}
 `

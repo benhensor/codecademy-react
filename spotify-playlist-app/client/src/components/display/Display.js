@@ -13,6 +13,16 @@ const Display = forwardRef((props, ref) => {
 	const [activeSearch, setActiveSearch] = useState(false)
 	const [filteredResults, setFilteredResults] = useState([])
 	const [showPlaylist, setShowPlaylist] = useState(false)
+	const [isTabletAndMobile, setIsTabletAndMobile] = useState(window.matchMedia('(max-width: 768px)').matches);
+
+	useEffect(() => {
+		const handleResize = () => {
+			setIsTabletAndMobile(window.matchMedia('(max-width: 768px)').matches);
+		}
+
+		window.addEventListener('resize', handleResize);
+		return () => window.removeEventListener('resize', handleResize);
+	}, []);
 
 	useEffect(() => {
 		if (searchResults && searchResults.length > 0) {
@@ -57,20 +67,23 @@ const Display = forwardRef((props, ref) => {
 	return (
 		<Container>
 			<StyledDisplay ref={ref} $activeSearch={activeSearch}>
-				<Search setShowPlaylist={setShowPlaylist} activeFilter={activeFilter} setActiveFilter={setActiveFilter}/>
-				{searchResults &&
-					searchResults.length > 0 &&
-					!loading &&
-					!error && (
+				<Search
+					setShowPlaylist={setShowPlaylist}
+					activeFilter={activeFilter}
+					setActiveFilter={setActiveFilter}
+				/>
+				{searchResults && !loading && !error && !isTabletAndMobile ? (
 					<Content $showPlaylist={showPlaylist}>
 						<SearchResults results={filteredResults} />
 						{showPlaylist && (
-							<Playlist
-								setShowPlaylist={setShowPlaylist}
-							/>
+							<Playlist setShowPlaylist={setShowPlaylist} />
 						)}
 					</Content>
-				)}
+				) : ( searchResults && !loading && !error && isTabletAndMobile ) ? (
+					<Content $showPlaylist={showPlaylist}>
+            {showPlaylist ? <Playlist setShowPlaylist={setShowPlaylist} /> : <SearchResults results={filteredResults} />}
+          </Content>
+				) : null}
 			</StyledDisplay>
 		</Container>
 	)

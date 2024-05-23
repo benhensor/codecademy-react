@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { usePlaylist } from '../../context/PlaylistContext'
-import styled from 'styled-components'
 import PlaylistItem from './PlaylistItem'
+import { StyledPlaylist, Header, NameInput, PlaylistName, Button, List } from './Styles'
 
 export default function Playlist({ setShowPlaylist }) {
 
@@ -66,77 +66,3 @@ export default function Playlist({ setShowPlaylist }) {
     </StyledPlaylist>
   )
 }
-
-const StyledPlaylist = styled.div`
-  height: 100%;
-  backdrop-filter: blur(5px);
-  padding: 1rem 0;
-  overflow-y: auto;
-	&::-webkit-scrollbar {
-		display: none;
-	}
-	-ms-overflow-style: none;
-	scrollbar-width: none;
-`
-
-const Header = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1rem;
-  padding: 0 1rem 1rem 1rem;
-  @media screen and (max-width: 768px) {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-`
-
-const PlaylistName = styled.h2`
-  display: flex;
-  align-items: center;
-  white-space: nowrap;
-  font-size: clamp(var(--font-size-md), 3vw, var(--font-size-xl));
-  color: var(--color-light);
-  height: 4rem;
-  cursor: pointer;
-  &:hover {
-    color: var(--color-primary);
-  }
-  @media screen and (max-width: 768px) {
-    margin-bottom: 1rem;
-  }
-`
-
-const NameInput = styled.input`
-  font-size: clamp(var(--font-size-md), 3vw, var(--font-size-xl));
-  padding: 0.6rem 0;
-  border: none;
-  border-radius: 0.2rem;
-  background-color: transparent;
-  color: var(--color-light);
-  height: 4rem;
-  &:focus {
-    outline: none;
-  }
-  @media screen and (max-width: 768px) {
-    margin-bottom: 1rem;
-  }
-`
-
-const Button = styled.button`
-  background-color: #00aa9025;
-  color: white;
-  padding: 1rem 2rem;
-  border: none;
-  border-radius: 0.2rem;
-  cursor: pointer;
-  transition: .12s;
-	text-shadow: 0 0 0.2rem #000000;
-  &:hover {
-    background-color: var(--color-primary);
-  }
-`
-
-const List = styled.ul`
-  list-style: none;
-`

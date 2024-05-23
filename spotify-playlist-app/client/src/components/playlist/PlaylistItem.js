@@ -1,8 +1,8 @@
 import React from 'react'
-import styled from 'styled-components'
 import { useSearch } from '../../context/SearchContext'
 import { usePlaylist } from '../../context/PlaylistContext'
 import Remove from '../icons/RemoveIcon'
+import { Container, ImgAndInfo, Image, Info, Title, Subtitle, SearchButton } from './Styles'
 
 export default function PlaylistItem({ item }) {
 
@@ -29,9 +29,9 @@ export default function PlaylistItem({ item }) {
             {type}
             {type === 'track' || type === 'album' ? (
               <> {' • '} 
-                <Button onClick={() => handleSearchById(artistId, type)}>
+                <SearchButton onClick={() => handleSearchById(artistId, type)}>
                   <span>{artistName}</span>
-                </Button>
+                </SearchButton>
               </>
             ) : null}
           </Subtitle>
@@ -41,78 +41,3 @@ export default function PlaylistItem({ item }) {
     </Container>
   )
 }
-
-const Container = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem;
-  user-select: none;
-  transition: .12s;
-  &:hover {
-		background-color: #ffffff15;
-	}
-`
-
-const ImgAndInfo = styled.div`
-  display: flex;
-  flex-grow: 1;
-  justify-content: flex-start;
-  align-items: center;
-  overflow: hidden;
-`
-
-const Image = styled.img`
-  width: 6.4rem;
-  height: 6.4rem;
-  margin-right: 1rem;
-  border-radius: 0.5rem;
-  flex-shrink: 0;
-  @media screen and (max-width: 768px) {
-    width: 4rem;
-    height: 4rem;
-  }
-`
-
-const Info = styled.div`
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-`
-
-const Title = styled.h3`
-  font-size: var(--font-size-md);
-  color: var(--color-light);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  cursor: pointer;
-  @media screen and (max-width: 768px) {
-    font-size: var(--font-size-xs);
-  }
-`
-
-const Subtitle = styled.h4`
-  font-size: var(--font-size-xs);
-  color: var(--color-light-gray);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  span {
-    cursor: pointer;
-    color: var(--color-primary);
-  }
-  @media screen and (max-width: 768px) {
-    font-size: var(--font-size-xxs);
-    color: var(--color-dark-gray);
-  }
-`
-
-const Button = styled.button`
-  background: none;
-  border: none;
-  color: inherit;
-  cursor: pointer;
-  padding: 0;
-  font: inherit;
-`
