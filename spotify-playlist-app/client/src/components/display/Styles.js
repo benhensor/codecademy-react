@@ -14,10 +14,10 @@ const Container = styled.div`
 	}
 	@media screen and (max-width: 768px) {
 		margin: 1rem 0;
+		height: 100%;
 	}
 	@media screen and (max-width: 450px) {
 		margin: 0;
-		height: 100%;
 	}
 `
 
@@ -66,7 +66,6 @@ const Content = styled.div`
 	}
 	@media screen and (max-width: 450px) {
 		margin: 0 0 1rem 0;
-		height: 100%;
 	}
 `
 
