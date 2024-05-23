@@ -2,6 +2,7 @@
 
 In this project, the task was to build a React web application called Jam. This challenge tests my knowledge of React components, passing state, and ability to work with the Spotify API to build a website that allows users to search the Spotify library, create a custom playlist, then save it to their Spotify account.
 
+
 ## Tech Stack
 
 ### Frontend:
@@ -9,7 +10,6 @@ In this project, the task was to build a React web application called Jam. This 
 * React
 * Styled Components
 * Axios
-* Spotify Web API
 
 ### Backend:
 
@@ -20,12 +20,19 @@ In this project, the task was to build a React web application called Jam. This 
 * cookie-parser
 * nodemon
 
+### API:
+
+* Spotify Web API
+* 
+
 ## Features
 
-* Users can sign into their Spotify accounts.
+* User login/logout to Spotify accounts with authentication and access tokens.
 * Users can search for artists, albums or songs.
 * Results can filtered by artist, album or song.
 * Users can click on search results to trigger further searches (IE clicking an album title will search for that album etc).
+* Tracks can be played by clicking on the track image.
+* Playback can be skipped by clicking anywhere on the progress bar.
 * Users can show or hide the playlist.
 * Tracks can be added and removed from the playlist.
 * The playlist can be renamed by clicking on the title.
