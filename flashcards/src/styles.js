@@ -171,6 +171,10 @@ const FlipCard = styled.div`
       font-weight: bold;
     }
   }
+	@media only screen and (max-width: 520px) {
+		width: 100%;
+	
+	}
 `
 
 export {
